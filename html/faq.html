@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | R&R COLLECTIONS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #C5A059; --black: #0A0A0A; --white: #FFFFFF; --grey: #1a1a1a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* Navbar - Glassmorphism */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo { font-family: 'Syncopate', sans-serif; color: var(--gold); text-decoration: none; font-size: 1.2rem; letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Header */
+        .header-section { padding: 180px 8% 60px; text-align: center; }
+        .header-section h1 { font-family: 'Syncopate', sans-serif; color: var(--gold); font-size: 3rem; letter-spacing: 12px; }
+
+        /* FAQ Content */
+        .faq-wrapper { max-width: 900px; margin: 40px auto 100px; padding: 0 20px; min-height: 60vh; }
+        .faq-category { margin-bottom: 40px; }
+        .faq-category h2 { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 2px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        
+        .faq-item { background: #111; border: 1px solid #222; margin-bottom: 15px; border-radius: 4px; overflow: hidden; transition: 0.3s; }
+        .faq-question { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: 0.4s ease; color: #888; font-size: 0.9rem; line-height: 1.6; }
+        
+        .faq-item:hover { border-color: var(--gold); }
+        .faq-item.active .faq-answer { padding: 0 25px 25px; max-height: 300px; }
+        .faq-item.active .faq-question { color: var(--gold); }
+
+        /* FOOTER - Unified 4-Column Style */
+        .main-footer { background: #050505; padding: 80px 8% 40px; border-top: 1px solid var(--grey); margin-top: 100px; }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-links h3 { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #888; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-links a:hover { color: white; padding-left: 5px; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #1a1a1a; color: #444; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">R&R COLLECTIONS</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="bikes.html">Bikes</a></li>
+            <li><a href="cars.html">Cars</a></li>
+            <li><a href="cart.html">Garage</a></li>
+        </ul>
+    </nav>
+
+    <header class="header-section">
+        <h1>QUESTIONS</h1>
+    </header>
+
+    <div class="faq-wrapper">
+        
+        <div class="faq-category">
+            <h2>01. FLEET & ACQUISITION</h2>
+            <div class="faq-item">
+                <div class="faq-question">What is the "Garage" feature? <span>+</span></div>
+                <div class="faq-answer">The Garage allows you to shortlist your favorite bikes and cars. It saves your selection in your browser so you can review your fleet later without needing to login.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I finalize a purchase? <span>+</span></div>
+                <div class="faq-answer">Once you've shortlisted your vehicles, use the Contact Us page to send your inquiry. Our Vijayawada concierge team will then reach out to finalize documentation and road tax.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Are these limited-edition models? <span>+</span></div>
+                <div class="faq-answer">Yes, many machines in our showroom, including the Apsara series, are part of limited production runs available exclusively through R&R COLLECTIONS.</div>
+            </div>
+        </div>
+
+        <div class="faq-category">
+            <h2>02. LOGISTICS & SUPPORT</h2>
+            <div class="faq-item">
+                <div class="faq-question">What are the delivery timelines? <span>+</span></div>
+                <div class="faq-answer">Standard delivery for ex-showroom models is 7-10 business days. Custom configurations may take longer depending on technical specifications.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is the pricing inclusive of GST? <span>+</span></div>
+                <div class="faq-answer">No, all listed prices are ex-showroom. Final on-road pricing includes the mandatory 18% GST, insurance, and RTO registration in Andhra Pradesh.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I book a test ride? <span>+</span></div>
+                <div class="faq-answer">Absolutely. Appointments for the 650cc fleet and our premium car lineup can be scheduled via the contact form or directly at our Vijayawada center.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="logo">R&R COLLECTIONS</h2>
+                <p style="color:#555; margin-top:10px; font-size:0.9rem;">Innovative for the Extraordinary.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="bikes.html">Bikes</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="faq.html" style="color:white">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 | R&R COLLECTIONS | Pure Performance</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('span').innerText = '-';
+                } else {
+                    item.querySelector('span').innerText = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

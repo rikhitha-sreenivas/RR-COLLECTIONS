@@ -1,0 +1,191 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>R&R COLLECTIONS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        let activeAudio = null;
+
+        function playAndScroll(type) {
+            const audio = document.getElementById(type + '-sound');
+            if (!audio) return;
+
+            if (activeAudio) {
+                activeAudio.pause();
+                activeAudio.currentTime = 0;
+            }
+
+            activeAudio = audio;
+            audio.volume = 1.0;
+            audio.currentTime = 0;
+            audio.play().catch(e => console.log("Audio playback waiting for interaction..."));
+
+            // 10s Cutoff
+            setTimeout(() => {
+                if (activeAudio === audio) smoothFadeOut(audio);
+            }, 10000);
+
+            // Scroll to Main
+            setTimeout(() => {
+                const target = document.getElementById('main-nav');
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        }
+
+        function smoothFadeOut(audio) {
+            let fadeInterval = setInterval(() => {
+                if (audio.volume > 0.05) {
+                    audio.volume -= 0.05;
+                } else {
+                    audio.pause();
+                    clearInterval(fadeInterval);
+                    activeAudio = null;
+                }
+            }, 100);
+        }
+
+        function scrollToMain() {
+            const target = document.getElementById('main-nav');
+            if(target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize listeners once the DOM is ready
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCartCounter();
+            
+            window.addEventListener('scroll', function() {
+                if (activeAudio && !activeAudio.paused) {
+                    const scrollPos = window.scrollY;
+                    const entryHeroHeight = window.innerHeight;
+                    if (scrollPos > 100) {
+                        let newVolume = 1 - (scrollPos / entryHeroHeight);
+                        if (newVolume <= 0) {
+                            activeAudio.volume = 0;
+                            activeAudio.pause();
+                            activeAudio = null;
+                        } else {
+                            activeAudio.volume = newVolume;
+                        }
+                    }
+                }
+            });
+        });
+
+        function updateCartCounter() {
+            const cart = JSON.parse(localStorage.getItem('RE_GARAGE')) || [];
+            const count = document.getElementById('cart-count');
+            if(count) count.innerText = cart.length;
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar" id="main-nav">
+        <div class="logo">R&R COLLECTIONS</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="html/bikes.html">Motorcycles</a></li>
+            <li><a href="html/cars.html">Apsara</a></li>
+            <li><a href="html/cart.html">Garage (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+
+    
+    <section class="entry-hero">
+        <div class="entry-content">
+            <h1>CHOOSE YOUR SOUL</h1>
+            <div class="choice-container">
+            <div class="choice-box" onclick="playAndScroll('rev')">
+                <span class="action-word">REV</span>
+                <p>THE CLASSIC THUMP</p>
+            </div>
+    
+            <div class="divider-line"></div>
+    
+             <div class="choice-box" onclick="playAndScroll('roar')">
+                <span class="action-word">ROAR</span>
+                <p>PURE PERFORMANCE</p>
+            </div>
+        </div>
+        <div class="scroll-prompt" onclick="scrollToMain()">
+                <span>Scroll to Explore Fleet</span>
+                <div class="mouse-icon"></div>
+            </div>
+        </div>
+    </section>
+    
+    <main class="split-hero">
+        <div class="hero-panel bike-side">
+            <div class="panel-overlay"></div>
+            <div class="panel-content">
+                <h2>Two Wheels</h2>
+                <p>THE HERITAGE COLLECTION</p>
+                <a href="html/bikes.html" class="panel-btn">Enter Showroom</a>
+            </div>
+        </div>
+
+        <div class="hero-panel car-side">
+            <div class="panel-overlay"></div>
+            <div class="panel-content">
+                <h2>Four Wheels</h2>
+                <p>THE PERFORMANCE STABLE</p>
+                <a href="html/cars.html" class="panel-btn">Explore Cars</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="logo">R&R COLLECTIONS</h2>
+                <p>Innovative for the Extraordinary..</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="html/bikes.html">Bikes</a></li>
+                    <li><a href="html/cars.html">Cars</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="html/contact.html">Contact Us</a></li>
+                    <li><a href="html/faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="html/privacy.html">Privacy Policy</a></li>
+                    <li><a href="html/terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 | R&R COLLECTIONS | Pure Performance</p>
+        </div>
+    </footer>
+
+    <audio id="rev-sound" src="audio/rev.mp3" preload="auto"></audio>
+<audio id="roar-sound" src="audio/roar.mp3" preload="auto"></audio>
+
+    <script>
+        // Smooth scroll function
+        function scrollToMain() {
+            document.getElementById('main-nav').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Cart Sync
+        function updateCartCounter() {
+            const cart = JSON.parse(localStorage.getItem('RE_GARAGE')) || [];
+            const count = document.getElementById('cart-count');
+            if(count) count.innerText = cart.length;
+        }
+        updateCartCounter();
+    </script>
+</body>
+</html>

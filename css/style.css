@@ -1,0 +1,590 @@
+:root {
+    --re-black: #1a1a1a;
+    --re-gold: #c5a059;
+    --re-silver: #e0e0e0;
+    --re-white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; /* High-end automotive font */
+}
+
+/* Ensure smooth scrolling when clicking 'Explore Fleet' */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fix the height of both heroes */
+.hero, .split-hero {
+    height: 100vh;
+    width: 100%;
+}
+
+/* Important: The footer shouldn't be hidden */
+.main-footer {
+    background: #0a0a0a;
+    padding: 60px 10%;
+    color: white;
+}
+
+body {
+    background-color: var(--re-black);
+    color: var(--re-white);
+}
+
+/* The Navigation - Glassmorphism effect */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 10%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--re-gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--re-white);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--re-gold);
+}
+
+/* The Product Grid - Responsive & Modern */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 50px 10%;
+}
+
+.bike-card {
+    background: #252525;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.bike-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--re-gold);
+}
+
+.bike-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: var(--transition);
+}
+
+.bike-card:hover img {
+    filter: grayscale(0%);
+}
+
+.bike-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.add-btn {
+    background: var(--re-gold);
+    color: var(--re-black);
+    border: none;
+    padding: 12px 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.add-btn:hover {
+    background: var(--re-white);
+}
+/* Update your existing CSS with these Hero Styles */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+#hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    color: var(--re-white);
+}
+
+.hero-content h1 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 15px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: var(--re-gold);
+}
+
+/* Button Styling */
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.main-btn {
+    padding: 15px 40px;
+    background: var(--re-gold);
+    color: var(--re-black);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 2px solid var(--re-gold);
+    transition: all 0.4s ease;
+}
+
+.main-btn:hover {
+    background: transparent;
+    color: var(--re-gold);
+}
+
+.sound-btn {
+    padding: 15px 40px;
+    background: transparent;
+    color: var(--re-white);
+    border: 2px solid var(--re-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.sound-btn:hover {
+    background: var(--re-white);
+    color: var(--re-black);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; letter-spacing: 5px; }
+    .hero-btns { flex-direction: column; align-items: center; }
+}
+.split-hero {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-panel {
+    position: relative;
+    flex: 1; /* Both sides start equal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: flex 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+/* Background Images */
+.bike-side {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://www.webbikeworld.com/wp-content/uploads/2023/06/2023_Royal_Enfield_Classic_350_16.jpg');
+    border-right: 2px solid var(--re-gold);
+}
+
+.car-side {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('bmw.jpg');
+}
+
+/* The Hover Effect: One side grows, the other shrinks */
+.hero-panel:hover {
+    flex: 2;
+}
+
+.panel-content h2 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 3.5rem;
+    color: var(--re-white);
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.panel-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid var(--re-white);
+    color: var(--re-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.panel-btn:hover {
+    background: var(--re-white);
+    color: var(--re-black);
+}
+/* =========================================
+   THE GLOBAL STANDARD FOOTER (RR COLLECTIONS)
+   ========================================= */
+.main-footer {
+    background-color: #080808 !important; /* Forces black background */
+    color: #ffffff !important;
+    padding: 80px 10% 40px 10% !important;
+    border-top: 1px solid rgba(197, 160, 89, 0.2) !important;
+    width: 100% !important;
+    position: relative !important;
+    clear: both !important; /* Prevents bikes/cars grid from overlapping */
+    display: block !important;
+}
+
+.footer-container {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr !important; 
+    gap: 40px !important;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: left !important; /* Ensures it's not centered by index page styles */
+}
+
+.footer-brand h2.logo {
+    font-family: 'Syncopate', sans-serif !important;
+    color: #c5a059 !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 4px !important;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    color: #888 !important;
+    line-height: 1.6 !important;
+    font-size: 0.9rem !important;
+    max-width: 300px;
+}
+
+.footer-links h3 {
+    color: #c5a059 !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 25px !important;
+    font-family: 'Syncopate', sans-serif !important;
+}
+
+.footer-links ul {
+    list-style: none !important;
+    padding: 0 !important;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px !important;
+}
+
+.footer-links ul li a {
+    text-decoration: none !important;
+    color: #bbbbbb !important;
+    font-size: 0.9rem !important;
+    transition: 0.3s ease !important;
+    display: inline-block !important;
+}
+
+.footer-links ul li a:hover {
+    color: #ffffff !important;
+    padding-left: 8px !important;
+}
+
+.footer-bottom {
+    text-align: center !important;
+    margin-top: 60px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #1a1a1a !important;
+    font-size: 0.8rem !important;
+    color: #555555 !important;
+    width: 100%;
+}
+
+/* Responsive Reset for the Footer */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+    .footer-brand p { margin: 0 auto 20px; }
+}
+
+/* Car Specific Hero */
+.car-hero {
+    height: 70vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), 
+                url('bmw.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Product Card Badges */
+.product-card {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: black;
+    padding: 5px 15px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.price {
+    color: var(--gold);
+    font-weight: 700;
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Section Title Styling */
+.section-title {
+    font-family: 'Syncopate', sans-serif;
+    color: var(--white);
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* --- GLOBAL --- */
+:root {
+    --re-black: #0A0A0A;
+    --re-gold: #C5A059;
+    --re-white: #FFFFFF;
+    --re-grey: #1A1A1A;
+    --transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--re-black); color: var(--re-white); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+
+/* --- 1. ENTRY HERO (Rev/Roar) --- */
+.entry-hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #111, #000);
+    position: relative;
+    z-index: 1500;
+}
+
+.entry-content h1 {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 15px;
+    color: #444;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.choice-container { display: flex; align-items: center; gap: 80px; }
+
+.action-word {
+    font-family: 'Syncopate', sans-serif;
+    font-size: 6rem;
+    font-weight: 900;
+    cursor: pointer;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+    transition: var(--transition);
+}
+
+.choice-box { text-align: center; cursor: pointer; }
+.choice-box p { font-size: 0.65rem; letter-spacing: 8px; margin-top: 15px; color: var(--re-gold); opacity: 0.4; }
+
+.choice-box:hover .action-word {
+    color: var(--re-white);
+    -webkit-text-stroke: 1px var(--re-white);
+    text-shadow: 0 0 40px rgba(197, 160, 89, 0.5);
+    transform: scale(1.1);
+}
+
+.divider-line { width: 1px; height: 120px; background: var(--re-gold); opacity: 0.2; }
+
+.scroll-prompt {
+    margin-top: 80px;
+    text-align: center;
+    color: #555;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.scroll-prompt:hover { color: var(--re-gold); }
+
+/* --- 2. NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 10%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.logo { font-family: 'Syncopate', sans-serif; color: var(--re-gold); letter-spacing: 4px; font-weight: bold; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: white; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--re-gold); }
+
+/* --- 3. SPLIT HERO --- */
+.split-hero { display: flex; height: 100vh; width: 100%; overflow: hidden; }
+.hero-panel { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; transition: var(--transition); background-size: cover; background-position: center; }
+.hero-panel:hover { flex: 1.6; }
+
+.bike-side { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://www.webbikeworld.com/wp-content/uploads/2023/06/2023_Royal_Enfield_Classic_350_16.jpg'); border-right: 1px solid rgba(197, 160, 89, 0.2); }
+.car-side { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('bmw.jpg'); }
+
+.panel-content { text-align: center; z-index: 5; }
+.panel-content h2 { font-family: 'Syncopate', sans-serif; font-size: 3.5rem; letter-spacing: 5px; margin-bottom: 10px; }
+.panel-btn { display: inline-block; padding: 12px 35px; border: 2px solid white; color: white; text-decoration: none; text-transform: uppercase; font-weight: bold; font-size: 0.8rem; margin-top: 20px; transition: 0.3s; }
+.panel-btn:hover { background: white; color: black; }
+
+/* --- 4. STANDARD FOOTER (FIXED) --- */
+.main-footer {
+    background-color: #080808 !important;
+    color: #ffffff !important;
+    padding: 80px 10% 40px !important;
+    border-top: 1px solid rgba(197, 160, 89, 0.2) !important;
+    position: relative !important;
+    clear: both !important;
+}
+
+.footer-container {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr !important; 
+    gap: 40px !important;
+}
+
+.footer-brand h2.logo { font-size: 1.1rem !important; margin-bottom: 15px; }
+.footer-brand p { color: #888 !important; font-size: 0.85rem !important; line-height: 1.6; }
+
+.footer-links h3 {
+    color: var(--re-gold) !important;
+    font-size: 0.85rem !important;
+    font-family: 'Syncopate', sans-serif !important;
+    margin-bottom: 20px !important;
+    text-transform: uppercase;
+}
+
+.footer-links ul { list-style: none !important; }
+.footer-links ul li { margin-bottom: 10px !important; }
+.footer-links ul li a { color: #aaa !important; text-decoration: none !important; font-size: 0.85rem !important; transition: 0.3s !important; }
+.footer-links ul li a:hover { color: white !important; padding-left: 5px; }
+
+.footer-bottom {
+    text-align: center !important;
+    margin-top: 50px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #1a1a1a !important;
+    font-size: 0.75rem !important;
+    color: #444 !important;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .choice-container { flex-direction: column; gap: 40px; }
+    .action-word { font-size: 3.5rem; }
+    .split-hero { flex-direction: column; }
+    .footer-container { grid-template-columns: 1fr 1fr; }
+}
+
