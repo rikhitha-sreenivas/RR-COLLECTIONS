@@ -1,9 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>R&R COLLECTIONS</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     
     <script>
@@ -23,12 +25,10 @@
             audio.currentTime = 0;
             audio.play().catch(e => console.log("Audio playback waiting for interaction..."));
 
-            // 10s Cutoff
             setTimeout(() => {
                 if (activeAudio === audio) smoothFadeOut(audio);
             }, 10000);
 
-            // Scroll to Main
             setTimeout(() => {
                 const target = document.getElementById('main-nav');
                 if(target) target.scrollIntoView({ behavior: 'smooth' });
@@ -52,7 +52,6 @@
             if(target) target.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Initialize listeners once the DOM is ready
         window.addEventListener('DOMContentLoaded', () => {
             updateCartCounter();
             
@@ -85,10 +84,10 @@
     <nav class="navbar" id="main-nav">
         <div class="logo">R&R COLLECTIONS</div>
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="html/bikes.html">Motorcycles</a></li>
-            <li><a href="html/cars.html">Apsara</a></li>
-            <li><a href="html/cart.html">Garage (<span id="cart-count">0</span>)</a></li>
+            <li><a href="./index.html" class="active">Home</a></li>
+            <li><a href="./html/bikes.html">Motorcycles</a></li>
+            <li><a href="./html/cars.html">Apsara</a></li>
+            <li><a href="./html/cart.html">Garage (<span id="cart-count">0</span>)</a></li>
         </ul>
     </nav>
 
@@ -122,7 +121,7 @@
             <div class="panel-content">
                 <h2>Two Wheels</h2>
                 <p>THE HERITAGE COLLECTION</p>
-                <a href="html/bikes.html" class="panel-btn">Enter Showroom</a>
+                <a href="./html/bikes.html" class="panel-btn">Enter Showroom</a>
             </div>
         </div>
 
@@ -131,7 +130,7 @@
             <div class="panel-content">
                 <h2>Four Wheels</h2>
                 <p>THE PERFORMANCE STABLE</p>
-                <a href="html/cars.html" class="panel-btn">Explore Cars</a>
+                <a href="./html/cars.html" class="panel-btn">Explore Cars</a>
             </div>
         </div>
     </main>
@@ -145,23 +144,23 @@
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="html/bikes.html">Bikes</a></li>
-                    <li><a href="html/cars.html">Cars</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./html/bikes.html">Bikes</a></li>
+                    <li><a href="./html/cars.html">Cars</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h3>Support</h3>
                 <ul>
-                    <li><a href="html/contact.html">Contact Us</a></li>
-                    <li><a href="html/faq.html">FAQ</a></li>
+                    <li><a href="./html/contact.html">Contact Us</a></li>
+                    <li><a href="./html/faq.html">FAQ</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h3>Legal</h3>
                 <ul>
-                    <li><a href="html/privacy.html">Privacy Policy</a></li>
-                    <li><a href="html/terms.html">Terms of Use</a></li>
+                    <li><a href="./html/privacy.html">Privacy Policy</a></li>
+                    <li><a href="./html/terms.html">Terms of Use</a></li>
                 </ul>
             </div>
         </div>
@@ -170,16 +169,14 @@
         </div>
     </footer>
 
-    <audio id="rev-sound" src="audio/rev.mp3" preload="auto"></audio>
-<audio id="roar-sound" src="audio/roar.mp3" preload="auto"></audio>
+    <audio id="rev-sound" src="./audio/rev.mp3" preload="auto"></audio>
+    <audio id="roar-sound" src="./audio/roar.mp3" preload="auto"></audio>
 
     <script>
-        // Smooth scroll function
         function scrollToMain() {
             document.getElementById('main-nav').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Cart Sync
         function updateCartCounter() {
             const cart = JSON.parse(localStorage.getItem('RE_GARAGE')) || [];
             const count = document.getElementById('cart-count');

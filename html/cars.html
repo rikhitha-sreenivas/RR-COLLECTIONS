@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apsara | R&R COLLECTIONS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C5A059;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --grey: #1a1a1a;
+            --transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Syncopate', sans-serif;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .car-hero {
+            height: 80vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+                url('/images/bmw1.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 12px;
+        }
+
+        .hero-text p {
+            color: var(--gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            padding: 80px 8%;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 25px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .car-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .car-card h3 {
+            font-family: 'Syncopate', sans-serif;
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .price-tag {
+            display: block;
+            margin: 15px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #111;
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            position: relative;
+            border: 1px solid var(--gold);
+        }
+
+        .modal-left {
+            flex: 1;
+            padding: 40px;
+            border-right: 1px solid #222;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-left img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .modal-right {
+            flex: 1;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .spec-label {
+            color: #666;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        .add-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        .main-footer {
+            background: #080808;
+            padding: 80px 8% 40px;
+            border-top: 1px solid var(--grey);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .footer-brand h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-links h3 {
+            color: var(--gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            color: #444;
+            font-size: 0.75rem;
+            border-top: 1px solid #111;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">R&R COLLECTIONS</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./bikes.html">Bikes</a></li>
+            <li><a href="./cars.html" style="color:var(--gold)">Apsara</a></li>
+            <li><a href="./cart.html">Garage</a></li>
+        </ul>
+    </nav>
+
+    <header class="car-hero">
+        <div class="hero-text">
+            <h1>APSARA</h1>
+            <p>The Art of Precision Engineering</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <h2 class="section-title"
+            style="border-left: 4px solid var(--gold); padding-left: 20px; margin-bottom: 40px; font-family: 'Syncopate';">
+            THE SHOWROOM</h2>
+        <div class="car-grid" id="car-container"></div>
+    </section>
+
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-left">
+                <img id="modalImg" src="">
+            </div>
+            <div class="modal-right">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+                <div class="spec-row">
+                    <span class="spec-label">Engine</span>
+                    <span id="valEng"></span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">0-100 km/h</span>
+                    <span id="valAccel"></span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Price</span>
+                    <span id="valPrice" style="color:var(--gold); font-weight:bold;"></span>
+                </div>
+                <button class="add-btn" id="modalAddBtn" style="margin-top: 30px;">Add to Garage</button>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="logo">R&R COLLECTIONS</h2>
+                <p>Innovative for the Extraordinary</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./bikes.html">Bikes</a></li>
+                    <li><a href="./cars.html">Apsara</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="./privacy.html">Privacy Policy</a></li>
+                    <li><a href="./terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 | R&R COLLECTIONS | Pure Performance</p>
+        </div>
+    </footer>
+
+    <script>
+        const carData = {
+            "BMW M2 Coupe": { eng: "3.0L Straight-6", accel: "4.1s", price: 9900000, img: "https://cdn.pixabay.com/photo/2018/02/21/17/01/bmw-m2-3170535_1280.jpg", desc: "Compact, agile, and pure M-Performance." },
+            "BMW M3 Competition": { eng: "3.0L Inline-6 Turbo", accel: "3.5s", price: 13100000, img: "https://cdn.pixabay.com/photo/2022/01/21/23/42/bmw-m3-6955939_1280.jpg", desc: "The world's most iconic sports sedan." },
+            "BMW M4 Competition": { eng: "3.0L M TwinPower", accel: "3.5s", price: 15300000, img: "https://cdn.pixabay.com/photo/2019/09/03/22/58/bmw-4450857_1280.jpg", desc: "A statement of power and aerodynamic design." },
+            "BMW M5 CS": { eng: "4.4L V8 Twin-Turbo", accel: "3.0s", price: 18000000, img: "https://cdn.pixabay.com/photo/2020/04/20/13/23/bmw-m5-5069168_1280.jpg", desc: "The quickest and most powerful M5 ever produced." },
+            "BMW M8 Competition": { eng: "4.4L V8 Twin-Turbo", accel: "3.2s", price: 24400000, img: "https://cdn.pixabay.com/photo/2021/03/22/22/48/bmw-6115729_1280.jpg", desc: "The flagship luxury grand tourer." },
+            "BMW Z4 M40i": { eng: "3.0L Inline-6", accel: "4.5s", price: 9000000, img: "https://cdn.pixabay.com/photo/2017/08/10/10/53/bmw-2621615_1280.jpg", desc: "Pure open-top driving pleasure." },
+            "BMW X5 M Competition": { eng: "4.4L V8 M-Twin", accel: "3.9s", price: 21000000, img: "https://cdn.pixabay.com/photo/2019/12/03/12/58/bmw-4669869_1280.jpg", desc: "The beast of the SUV world." },
+            "Bugatti Chiron Pur Sport": { eng: "8.0L W16 Quad-Turbo", accel: "2.3s", price: 350000000, img: "https://cdn.pixabay.com/photo/2021/05/29/10/55/bugatti-6293750_1280.jpg", desc: "The pinnacle of speed and engineering." },
+            "Lamborghini Revuelto": { eng: "6.5L V12 Hybrid", accel: "2.5s", price: 88900000, img: "https://cdn.pixabay.com/photo/2021/08/06/20/15/lamborghini-6527842_1280.jpg", desc: "The high-voltage successor to the Aventador." },
+            "Ferrari SF90 Stradale": { eng: "4.0L V8 Hybrid", accel: "2.5s", price: 75000000, img: "https://cdn.pixabay.com/photo/2019/12/15/21/12/ferrari-4698078_1280.jpg", desc: "The fastest road-legal Ferrari ever produced." },
+            "McLaren 750S": { eng: "4.0L V8 Twin-Turbo", accel: "2.8s", price: 59000000, img: "https://cdn.pixabay.com/photo/2022/02/03/02/59/mclaren-6990292_1280.jpg", desc: "Lightweight precision for the track." },
+            "Porsche 911 GT3 RS": { eng: "4.0L Flat-6", accel: "3.2s", price: 35000000, img: "https://cdn.pixabay.com/photo/2022/02/11/23/18/porsche-911-7008368_1280.jpg", desc: "Aerodynamics perfected for street and circuit." },
+            "Aston Martin Valhalla": { eng: "4.0L V8 Hybrid", accel: "2.5s", price: 80000000, img: "https://cdn.pixabay.com/photo/2021/12/11/11/45/aston-martin-6862813_1280.jpg", desc: "British elegance meets Formula 1 technology." },
+            "Mahindra Thar Earth": { eng: "2.2L mHawk Diesel", accel: "10.2s", price: 1840000, img: "https://cdn.pixabay.com/photo/2018/09/09/16/17/suv-3664796_1280.jpg", desc: "The legendary Indian off-road spirit." },
+            "Mercedes-AMG G 63": { eng: "4.0L V8 Biturbo", accel: "4.5s", price: 33000000, img: "https://cdn.pixabay.com/photo/2020/02/25/20/34/mercedes-g-class-4880071_1280.jpg", desc: "Unmatched luxury and off-road dominance." },
+            "Land Rover Defender 110": { eng: "5.0L V8 S/C", accel: "5.4s", price: 23500000, img: "https://cdn.pixabay.com/photo/2019/08/03/10/45/land-rover-4381635_1280.jpg", desc: "The ultimate expedition vehicle." },
+            "Rolls-Royce Cullinan": { eng: "6.75L V12", accel: "5.2s", price: 69500000, img: "https://cdn.pixabay.com/photo/2021/10/10/19/38/rolls-royce-6697817_1280.jpg", desc: "The most luxurious SUV in the world." },
+            "Jeep Wrangler Rubicon": { eng: "2.0L Turbo", accel: "7.6s", price: 7100000, img: "https://cdn.pixabay.com/photo/2018/09/09/16/17/suv-3664796_1280.jpg", desc: "The king of the rock crawlers." }
+        };
+        
+        function generateShowroom() {
+            const container = document.getElementById('car-container');
+            let html = '';
+            for (let name in carData) {
+                const car = carData[name];
+                const displayPrice = car.price >= 10000000 ? (car.price / 10000000).toFixed(2) + " Cr" : (car.price / 100000).toFixed(2) + " Lakh";
+
+                html += `
+        <div class="car-card">
+            <img src="${car.img}" onclick="openCarModal('${name}')">
+            <h3>${name}</h3>
+            <span class="price-tag">₹ ${displayPrice}</span>
+            <button class="add-btn" onclick="openCarModal('${name}')">Preview</button>
+        </div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function openCarModal(name) {
+            const car = carData[name];
+            const displayPrice = car.price >= 10000000 ? (car.price / 10000000).toFixed(2) + " Cr" : (car.price / 100000).toFixed(2) + " Lakh";
+
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalDesc').innerText = car.desc;
+            document.getElementById('modalImg').src = car.img;
+            document.getElementById('valEng').innerText = car.eng;
+            document.getElementById('valAccel').innerText = car.accel;
+            document.getElementById('valPrice').innerText = "₹ " + displayPrice;
+
+            document.getElementById('modalAddBtn').onclick = () => addToGarage(name);
+
+            document.getElementById('carModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('carModal').style.display = 'none';
+        }
+
+        function addToGarage(name) {
+            const car = carData[name];
+            let cart = JSON.parse(localStorage.getItem('RE_GARAGE')) || [];
+
+            cart.push({ name: name, price: car.price });
+
+            localStorage.setItem('RE_GARAGE', JSON.stringify(cart));
+            alert(name + " has been successfully added to your Garage!");
+            closeModal();
+        }
+
+        window.onload = generateShowroom;
+
+        window.onclick = (e) => {
+            if (e.target == document.getElementById('carModal')) closeModal();
+        }
+    </script>
+</body>
+
+</html>

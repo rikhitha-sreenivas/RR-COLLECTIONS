@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | R&R COLLECTIONS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #C5A059;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --grey: #1a1a1a;
+            --transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .logo { font-family: 'Syncopate', sans-serif; color: var(--gold); text-decoration: none; font-size: 1.2rem; letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        .contact-hero {
+            padding: 180px 8% 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            min-height: 80vh;
+        }
+
+        .contact-info h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 10px;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .contact-info p { color: #888; line-height: 1.8; margin-bottom: 40px; }
+
+        .info-details h4 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .info-details p { color: var(--gold); font-weight: 600; margin-bottom: 30px; }
+
+        .contact-form {
+            background: #111;
+            padding: 40px;
+            border: 1px solid #222;
+            transition: var(--transition);
+        }
+
+        .contact-form:hover { border-color: var(--gold); }
+
+        .form-group { margin-bottom: 25px; }
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            background: #000;
+            border: 1px solid #333;
+            padding: 15px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover { background: var(--gold); color: black; }
+
+        .main-footer {
+            background: #050505;
+            padding: 80px 8% 40px;
+            border-top: 1px solid var(--grey);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-links h3 { color: var(--gold); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #888; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-links a:hover { color: white; padding-left: 5px; }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .contact-hero { grid-template-columns: 1fr; padding-top: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">R&R COLLECTIONS</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./bikes.html">Bikes</a></li>
+            <li><a href="./cars.html">Cars</a></li>
+            <li><a href="./cart.html" style="color:var(--gold)">Garage</a></li>
+        </ul>
+    </nav>
+
+    <main class="contact-hero">
+        <div class="contact-info">
+            <h1>REACH OUT</h1>
+            <p>Connect with the R&R Collections concierge team. Whether you are inquiring about a limited-run Apsara or custom resin commissions, our Vijayawada office is ready to assist.</p>
+            
+            <div class="info-details">
+                <h4>Headquarters</h4>
+                <p>Vijayawada, Andhra Pradesh, India</p>
+                
+                <h4>Official Mail</h4>
+                <p>concierge@R&Rcollections.in</p>
+                
+                <h4>Direct Connection</h4>
+                <p>+91 96662 34811</p>
+            </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label>Full Identity</label>
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label>Electronic Address</label>
+                <input type="email" placeholder="email@address.com" required>
+            </div>
+            <div class="form-group">
+                <label>Inquiry Message</label>
+                <textarea rows="5" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Transmit</button>
+        </form>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="logo">R&R COLLECTIONS</h2>
+                <p style="color:#555; margin-top:10px; font-size:0.9rem;">Innovative for the Extraordinary</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./bikes.html">Bikes</a></li>
+                    <li><a href="./cars.html">Cars</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="./privacy.html">Privacy Policy</a></li>
+                    <li><a href="./terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 | R&R COLLECTIONS | Pure Performance</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Your inquiry has been transmitted to our Vijayawada center. Expect a response within 24 hours.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>

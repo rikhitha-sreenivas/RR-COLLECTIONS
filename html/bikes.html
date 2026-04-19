@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikes | R&R COLLECTIONS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #C5A059;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --grey: #1a1a1a;
+            --transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Syncopate', sans-serif;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .bike-hero {
+            height: 80vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+                url('/images/royal.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-text h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 4rem;
+            letter-spacing: 12px;
+            margin: 0;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .content-section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+            text-transform: uppercase;
+        }
+
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .bike-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 30px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .bike-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            background: #151515;
+        }
+
+        .bike-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .bike-card h3 {
+            font-family: 'Syncopate', sans-serif;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+
+        .add-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .add-btn:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #0f0f0f;
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+
+        .modal-left {
+            flex: 1.2;
+            background: #000;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-left img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .modal-right {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 2rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+            padding: 15px 0;
+        }
+
+        .spec-label {
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .spec-value {
+            color: var(--gold);
+            font-family: 'Syncopate';
+            font-size: 0.9rem;
+        }
+
+        .main-footer {
+            background: #080808;
+            padding: 80px 8% 40px;
+            border-top: 1px solid var(--grey);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .footer-brand h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-links h3 {
+            color: var(--gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            color: #444;
+            font-size: 0.75rem;
+            border-top: 1px solid #111;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">R&R COLLECTIONS</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./bikes.html" style="color:var(--gold)">Bikes</a></li>
+            <li><a href="./cars.html">Apsara</a></li>
+            <li><a href="./cart.html">Garage</a></li>
+        </ul>
+    </nav>
+
+    <header class="bike-hero">
+        <div class="hero-text">
+            <h1>MOTORCYCLES</h1>
+            <p>The Heritage of the Thump</p>
+        </div>
+    </header>
+    <section class="content-section">
+        <h2 class="section-title">The Fleet</h2>
+        <div class="bike-grid" id="bike-container"></div>
+    </section>
+
+    <div id="bikeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-left"><img id="modalImg" src=""></div>
+            <div class="modal-right">
+                <h2 id="modalTitle" style="font-family: 'Syncopate'; color: var(--gold); margin-bottom: 20px;"></h2>
+                <div class="spec-row"><span class="spec-label">Engine</span><span id="valEng" class="spec-value"></span>
+                </div>
+                <div class="spec-row"><span class="spec-label">Power</span><span id="valPower"
+                        class="spec-value"></span></div>
+                <div class="spec-row"><span class="spec-label">Top Speed</span><span id="valSpeed"
+                        class="spec-value"></span></div>
+                <button class="add-btn" style="margin-top: 30px; background: var(--gold); color: black;">Inquire
+                    Now</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="logo">R&R COLLECTIONS</h2>
+                <p>Innovative for the Extraordinary</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./bikes.html">Bikes</a></li>
+                    <li><a href="./cars.html">Apsara</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="./privacy.html">Privacy Policy</a></li>
+                    <li><a href="./terms.html">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 | R&R COLLECTIONS | Pure Performance</p>
+        </div>
+    </footer>
+
+    <script>
+        const bikeData = {
+            "Classic 350": { eng: "349cc J-Series", power: "20.2 BHP", speed: "114 km/h", price: 193000, img: "https://cdn.pixabay.com/photo/2022/03/06/07/51/motorcycle-7051486_1280.jpg" },
+            "Bullet 350": { eng: "349cc J-Series", power: "20.2 BHP", speed: "110 km/h", price: 173500, img: "https://cdn.pixabay.com/photo/2020/09/27/06/31/bullet-5605890_1280.jpg" },
+            "Hunter 350": { eng: "349cc J-Series", power: "20.2 BHP", speed: "114 km/h", price: 149000, img: "https://cdn.pixabay.com/photo/2020/05/27/20/07/motorcycle-5229802_1280.jpg" },
+            "Meteor 350": { eng: "349cc J-Series", power: "20.2 BHP", speed: "112 km/h", price: 205000, img: "https://cdn.pixabay.com/photo/2022/05/01/07/31/meteor-7167134_1280.jpg" },
+            "Himalayan 450": { eng: "452cc Liquid-Cooled", power: "39.5 BHP", speed: "150 km/h", price: 285000, img: "https://cdn.pixabay.com/photo/2021/01/12/11/53/motorcycle-5911686_1280.jpg" },
+            "Guerrilla 450": { eng: "452cc Liquid-Cooled", power: "39.5 BHP", speed: "150 km/h", price: 239000, img: "https://cdn.pixabay.com/photo/2022/09/24/07/59/royal-enfield-7476043_1280.jpg" },
+            "Interceptor 650": { eng: "648cc Parallel Twin", power: "47.0 BHP", speed: "164 km/h", price: 303000, img: "https://cdn.pixabay.com/photo/2020/10/24/09/21/motorcycle-5680920_1280.jpg" },
+            "Continental GT 650": { eng: "648cc Parallel Twin", power: "47.4 BHP", speed: "169 km/h", price: 319000, img: "https://cdn.pixabay.com/photo/2019/11/26/13/03/motorcycle-4654372_1280.jpg" },
+            "Super Meteor 650": { eng: "648cc Parallel Twin", power: "47.0 BHP", speed: "160 km/h", price: 363000, img: "https://cdn.pixabay.com/photo/2015/08/27/21/02/motorcycle-910396_1280.jpg" },
+            "Shotgun 650": { eng: "648cc Parallel Twin", power: "47.0 BHP", speed: "160 km/h", price: 359000, img: "https://cdn.pixabay.com/photo/2020/09/16/11/58/motorcycle-5576338_1280.jpg" },
+            "Bear 650": { eng: "648cc Parallel Twin", power: "47.4 BHP", speed: "160 km/h", price: 339000, img: "https://cdn.pixabay.com/photo/2017/07/21/10/30/motorrad-2525603_1280.jpg" },
+            "Classic 650": { eng: "648cc Parallel Twin", power: "47.0 BHP", speed: "165 km/h", price: 320000, img: "https://cdn.pixabay.com/photo/2016/04/07/18/09/motorcycle-1314360_1280.jpg" },
+            "Scram 411": { eng: "411cc Single", power: "24.3 BHP", speed: "120 km/h", price: 206000, img: "https://cdn.pixabay.com/photo/2015/09/08/21/07/motorcycle-930679_1280.jpg" },
+            "GT-R650 (Race)": { eng: "648cc Race-Tuned", power: "55.0 BHP", speed: "185 km/h", price: 450000, img: "https://cdn.pixabay.com/photo/2022/07/19/21/06/motorcycle-7332574_1280.jpg" },
+            "Himalayan Raid": { eng: "452cc Rally-Spec", power: "42.0 BHP", speed: "155 km/h", price: 350000, img: "https://cdn.pixabay.com/photo/2017/08/16/17/48/motorcycle-2648991_1280.jpg" }
+        };
+        
+        function generateBikes() {
+            const container = document.querySelector('.bike-grid');
+            let html = '';
+            for (let name in bikeData) {
+                html += `
+        <div class="bike-card">
+            <img src="${bikeData[name].img}" alt="${name}" onclick="openBike('${name}')">
+            <h3>${name}</h3>
+            <button class="add-btn" onclick="openBike('${name}')">View Preview</button>
+        </div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function openBike(name) {
+            const data = bikeData[name];
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalImg').src = data.img;
+            document.getElementById('valEng').innerText = data.eng;
+            document.getElementById('valPower').innerText = data.power;
+            document.getElementById('valSpeed').innerText = data.speed;
+
+            const modalBtn = document.querySelector('#bikeModal .add-btn');
+            modalBtn.innerText = "Add to Garage";
+
+            modalBtn.onclick = function () {
+                addToGarage(name);
+            };
+
+            document.getElementById('bikeModal').style.display = 'flex';
+        }
+
+        function addToGarage(name) {
+            const data = bikeData[name];
+            let garage = JSON.parse(localStorage.getItem('RE_GARAGE')) || [];
+
+            const itemToAdd = {
+                name: name,
+                price: data.price,
+                type: 'bike'
+            };
+
+            garage.push(itemToAdd);
+            localStorage.setItem('RE_GARAGE', JSON.stringify(garage));
+
+            alert(name + " has been added to your garage!");
+            window.location.href = "./cart.html";
+        }
+
+        function closeModal() {
+            document.getElementById('bikeModal').style.display = 'none';
+        }
+
+        window.onload = generateBikes;
+    </script>
+</body>
+
+</html>
